@@ -1,6 +1,6 @@
 # CI de Nível 01 - Disparo Manual através de clique
 
-name: 'Execução Manual'
+name: "Execução Manual"
 
 on:
   workflow_dispatch:
@@ -13,24 +13,7 @@ permissions:
   statuses: write
 
 jobs:
-  lint:
-    name: Super Linter
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Executar Super-Linter
-        uses: super-linter/super-linter@v8.6.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_JAVASCRIPT_ES: true
-          VALIDATE_TYPESCRIPT_ES: true
-
+ 
   e2e-tests:
     name: Execução dos testes e2e
     runs-on: ubuntu-latest
@@ -55,3 +38,24 @@ jobs:
 
       - name: Executando testes e2e
         run: yarn run e2e
+
+  lint:
+    name: Super Linter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Executar Super-Linter
+        uses: super-linter/super-linter@v8.6.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BRANCH: main
+          VALIDATE_ALL_CODEBASE: false
+          FILTER_REGEX_EXCLUDE: '(^\.git/|^node_modules/|^reports/)'
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_TYPESCRIPT_ES: true
