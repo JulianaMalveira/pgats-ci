@@ -1,7 +1,10 @@
 import { router } from '../router.js';
 import { cloneTemplate, RoboComponent } from './robo.component.js';
 
+const      teste=1
 const testeSuperLinter = 'erro proposital';
+
+
 const template = document.createElement('template');
 template.innerHTML = `
 <div class="container">
