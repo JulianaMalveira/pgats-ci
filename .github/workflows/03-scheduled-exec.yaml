@@ -21,6 +21,8 @@ jobs:
   e2e-tests:
     # maquina onde o job vai rodar
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.47.2-noble
 
     # passos do job
     steps:
@@ -47,10 +49,6 @@ jobs:
       # instalação das dependências
       - name: Instalando dependências
         run: yarn install --frozen-lockfile
-
-      # instalação do browser do Playwright
-      - name: Instalando browser do Playwright
-        run: npx playwright install --with-deps chromium
 
       # executar os testes e2e
       - name: Executando testes e2e

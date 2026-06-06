@@ -16,6 +16,8 @@ jobs:
   e2e-tests:
     name: Execução dos testes e2e
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.47.2-noble
 
     steps:
       - name: Checkout do projeto
@@ -33,10 +35,6 @@ jobs:
 
       - name: Instalando dependências
         run: yarn install --frozen-lockfile
-
-      - name: Instalando Browsers do Playwright
-        run: yarn playwright install --with-deps chromium
-        timeout-minutes: 10
 
       - name: Executando testes e2e
         run: yarn run e2e
