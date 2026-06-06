@@ -2,7 +2,6 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('user rides', () => {
-
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
@@ -13,7 +12,7 @@ test.describe('user rides', () => {
 
     await Promise.all([
       page.waitForURL(/success/),
-      page.getByRole('button', { name: 'Next' }).click()
+      page.getByRole('button', { name: 'Next' }).click(),
     ]);
 
     await expect(page).toHaveURL(/success/);
@@ -46,5 +45,4 @@ test.describe('user rides', () => {
 
     await expect(page.getByText(/1 person/i)).toBeVisible();
   });
-
 });

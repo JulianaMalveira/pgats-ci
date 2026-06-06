@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "JulianaMalveira/pgats-ci",
+  "pipelineDirectory": "pgats-ci",
+  "workspaceDirectory": "pgats-ci\\pgats-ci",
+  "repositories": {
+    "JulianaMalveira/pgats-ci": {
+      "repositoryPath": "pgats-ci\\pgats-ci",
+      "lastRunOn": "06/05/2026 22:52:15 -03:00"
+    }
+  },
+  "lastRunOn": "06/05/2026 22:52:15 -03:00"
+}

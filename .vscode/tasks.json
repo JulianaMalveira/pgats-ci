@@ -1,12 +1,12 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Run Playwright tests",
-			"type": "shell",
-			"command": "npx playwright test",
-			"isBackground": false,
-			"problemMatcher": []
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Playwright tests",
+      "type": "shell",
+      "command": "npx playwright test",
+      "isBackground": false,
+      "problemMatcher": []
+    }
+  ]
 }

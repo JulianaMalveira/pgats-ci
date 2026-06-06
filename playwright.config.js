@@ -22,7 +22,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html', { open: false }],
-    ['junit', { outputFile: 'results.xml' }]
+    ['junit', { outputFile: 'results.xml' }],
   ],
 
   /* Shared settings for all the projects below */
@@ -33,7 +33,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test */
     trace: 'on-first-retry',
 
-    screenshot: 'only-on-failure'
+    screenshot: 'only-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -41,10 +41,10 @@ export default defineConfig({
     {
       name: 'chromium',
       use: {
-        ...devices['Desktop Chrome']
-      }
-    }
-  ]
+        ...devices['Desktop Chrome'],
+      },
+    },
+  ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {

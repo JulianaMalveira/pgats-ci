@@ -15,12 +15,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/ms-playwright
+            ~/AppData/Local/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
 
       - name: Install dependencies
-        run: npm install -g yarn && yarn install
+        run: yarn install --frozen-lockfile
 
-      - name: Install Playwright browsers
-        run: yarn playwright install
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
 
       - name: Run E2E tests locally
         run: yarn run e2e
