@@ -1,4 +1,5 @@
 node_modules
+actions-runner/
 .stryker-tmp
 reports
 /test-results/

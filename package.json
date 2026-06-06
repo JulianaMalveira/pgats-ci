@@ -15,7 +15,7 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:mutation": "npx stryker run",
     "start": "lite-server",
-    "e2e": "npx playwright test"
+    "e2e": "playwright test"
   },
   "keywords": [],
   "author": "",

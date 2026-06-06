@@ -7,11 +7,8 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './e2e',
 
-  /* Executar sem paralelismo para facilitar o diagnóstico */
-  fullyParallel: false,
-
-  /* Força apenas um worker */
-  workers: 1,
+  /* Run independent tests in parallel. */
+  fullyParallel: true,
 
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -28,7 +25,7 @@ export default defineConfig({
   /* Shared settings for all the projects below */
   use: {
     /* Base URL to use in actions like await page.goto('/') */
-    baseURL: 'https://pgats-ci-example.netlify.app',
+    baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test */
     trace: 'on-first-retry',
@@ -47,9 +44,9 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  webServer: {
+    command: 'npm run start',
+    url: 'http://127.0.0.1:3000',
+    reuseExistingServer: !process.env.CI,
+  },
 });

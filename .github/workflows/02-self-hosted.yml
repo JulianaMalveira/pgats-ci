@@ -5,7 +5,7 @@ on:
 
 jobs:
   test-runner:
-    runs-on: self-hosted
+    runs-on: [self-hosted, windows]
 
     steps:
       - name: Checkout
@@ -14,16 +14,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24.x
+          node-version: 22.x
           cache: yarn
           cache-dependency-path: yarn.lock
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         with:
-          path: |
-            ~/.cache/ms-playwright
-            ~/AppData/Local/ms-playwright
+          path: ~/AppData/Local/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-playwright-
@@ -32,7 +33,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Install Playwright browser
-        run: npx playwright install --with-deps chromium
+        run: yarn playwright install chromium
 
       - name: Run E2E tests locally
         run: yarn run e2e
