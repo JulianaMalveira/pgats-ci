@@ -59,6 +59,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
           VALIDATE_ALL_CODEBASE: true
-          FILTER_REGEX_INCLUDE: '^(src|test|e2e|api|css|\.github/workflows)/'
           VALIDATE_JAVASCRIPT_ES: true
           VALIDATE_JAVASCRIPT_PRETTIER: true
