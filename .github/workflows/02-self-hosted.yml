@@ -1,0 +1,26 @@
+name: Self Hosted Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-runner:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      - name: Install dependencies
+        run: npm install -g yarn && yarn install
+
+      - name: Install Playwright browsers
+        run: yarn playwright install
+
+      - name: Run E2E tests locally
+        run: yarn run e2e

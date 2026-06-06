@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 21,
+  "agentName": "JULIANAMALVEIRA",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus3.actions.githubusercontent.com/CcQ1H4H0Dx488PJ5aYAGaIMCvCmWFOwLaF7YUsStKazWgqcx1I/",
+  "gitHubUrl": "https://github.com/JulianaMalveira/pgats-ci",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
