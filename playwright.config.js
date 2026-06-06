@@ -6,6 +6,10 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './e2e',
+  timeout: 15000,
+  expect: {
+    timeout: 5000,
+  },
 
   /* Run independent tests in parallel. */
   fullyParallel: true,
@@ -45,7 +49,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npm run start',
+    command: 'node scripts/static-server.js',
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
   },

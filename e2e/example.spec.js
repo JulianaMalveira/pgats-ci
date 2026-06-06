@@ -3,7 +3,8 @@ import { test, expect } from '@playwright/test';
 
 test.describe('user rides', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.route('https://cdn.jsdelivr.net/**', (route) => route.abort());
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
   });
 
   test('user should be able to ride', async ({ page }) => {
