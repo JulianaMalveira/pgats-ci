@@ -52,4 +52,5 @@ jobs:
 
       # executar os testes e2e
       - name: Executando testes e2e
-        run: yarn run e2e
+        run: yarn run e2e --reporter=line
+        timeout-minutes: 2

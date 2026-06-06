@@ -37,4 +37,5 @@ jobs:
         timeout-minutes: 10
 
       - name: Run E2E tests locally
-        run: yarn run e2e
+        run: yarn run e2e --reporter=line
+        timeout-minutes: 2
