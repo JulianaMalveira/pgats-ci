@@ -25,15 +25,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
 
       - name: Instalando Yarn
         run: npm install -g yarn
 
       - name: Instalando dependências
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Instalando Browsers do Playwright
-        run: yarn playwright install
+        run: yarn playwright install --with-deps chromium
+        timeout-minutes: 10
 
       - name: Executando testes e2e
         run: yarn run e2e
