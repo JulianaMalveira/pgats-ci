@@ -43,12 +43,13 @@ jobs:
   lint:
     name: Super Linter
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - name: Executar Super-Linter
@@ -56,7 +57,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-          VALIDATE_ALL_CODEBASE: false
-          FILTER_REGEX_EXCLUDE: '(^\.git/|^node_modules/|^reports/)'
+          VALIDATE_ALL_CODEBASE: true
+          FILTER_REGEX_INCLUDE: '^(src|test|e2e|api|css|\.github/workflows)/'
+          VALIDATE_GITHUB_ACTIONS: true
           VALIDATE_JAVASCRIPT_ES: true
-          VALIDATE_TYPESCRIPT_ES: true
+          VALIDATE_JAVASCRIPT_PRETTIER: true
+          VALIDATE_TYPESCRIPT_ES: false
+          VALIDATE_YAML: true
