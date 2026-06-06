@@ -1,6 +1,6 @@
 # CI de Nível 02 - Execução Agendada
 
-# nome da pipeline
+# Nome da pipeline
 name: "Scheduled Execution"
 
 # gatilhos / triggers - regras de disparo
