@@ -1,0 +1,24 @@
+name: Execução Recorrente (5 min)
+
+on:
+  schedule:
+    # Tenta rodar a cada 5 minutos (sujeito a atrasos do GitHub)
+    - cron: "*/5 * * * *"
+  # Permite que você rode o pipeline manualmente para testar
+  workflow_dispatch: 
+
+jobs:
+  job_recorrente:
+    runs-on: ubuntu-latest
+    # Cancela se demorar mais que o intervalo para não acumular processos
+    timeout-minutes: 2 
+    
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Exemplo de tarefa
+        run: |
+          echo "Iniciando tarefa agendada..."
+          echo "Horário atual: $(date)"
+          # Insira aqui os comandos do seu script ou pipeline
